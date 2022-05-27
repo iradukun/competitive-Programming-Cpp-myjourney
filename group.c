@@ -10,7 +10,6 @@ void main() {
     FILE* fp;
     FILE* instream;
     int num, i;
-    
     printf("Enter the name of the file: ");
     scanf("%s", fileName);
     fp = fopen(fileName, "w");
@@ -31,24 +30,27 @@ void main() {
         exit(-1);
     }
     printf("\nRESULT : \n");
-    int counter;
-
-    int k ;
-    char *pos;
-    counter=0;
+    int counter = 1;
+    i = 0;
     while (fgets(buffer, sizeof(buffer) - 1, instream) != NULL) {
-        k=0;
-        if(!strncmp(buffer,prevline,4)){
-                counter++;
-            while((pos=strstr(buffer+i,prevline)) !=NULL){
-                k=(pos-buffer)+1;
-            }
-            printf("%c %c %c %c %c :%d\n\\n=========\n\n",buffer[0],buffer[1],buffer[2],buffer[3],buffer[4], counter);
-            printf("%s \n%s",buffer,prevline);
-        }
-        strcpy(prevline,buffer);
+        strcpy(names_arr[i], buffer);
+        i++;
+        int sz = strlen(buffer);
     }
-   
+    
+    for (int j = 0;j < 4;j++) {
+        for (int k = j + 1;k < 4;k++)
+            if (!strncmp(names_arr[j], names_arr[k], 4)){
+                printf("%s",names_arr[j]);
+                counter++;
+             break;
+                 
+            }else{
+                printf("OOPS NO matching words!");
+                exit(1);
+            }
+    }
+     printf("\n\nCOUNTED %d",counter);
 
     fclose(instream);
 }
