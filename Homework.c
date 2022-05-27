@@ -35,11 +35,12 @@ void main() {
 
     int k ;
     char *pos;
-    counter=0;
+    counter=1;
     while (fgets(buffer, sizeof(buffer) - 1, instream) != NULL) {
         k=0;
-        if(!strncmp(buffer,prevline,4)){
+        if(!strncmp(buffer,prevline,3)){
                 counter++;
+            
             while((pos=strstr(buffer+i,prevline)) !=NULL){
                 k=(pos-buffer)+1;
             }
