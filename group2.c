@@ -5,7 +5,7 @@
 
 struct arrayOfSameNames{
     char common[5];
-    short int count;
+     int count;
 };
 
  int getThesame(struct arrayOfSameNames *names_arr, char *common, int arr_size){
@@ -44,24 +44,24 @@ if(isdigit(filename[0])){
     printf("How many names do you want to enter? ");
     scanf("%d", &n);
     struct arrayOfSameNames arr[n];
-     int sizeof_arr = 0;
+     int sizeof_array = 0;
     FILE *ptr = fopen(filename, "w");
 
     for(int i = 0; i < n; i++){
         printf("enter the %d name\n",i+1);
         scanf(" %[^\n]", name);
         fprintf(ptr,"%s\n", name);
-        char fourChars[5];
-        strncpy(fourChars, name, 4);
-        if(getThesame(arr, fourChars, sizeof_arr) == 0){
-            strncpy(arr[sizeof_arr].common, name, 4);
-            arr[sizeof_arr].count = 1;
-            sizeof_arr++;
+        char fourCharacters[5];
+        strncpy(fourCharacters, name, 4);
+        if(getThesame(arr, fourCharacters, sizeof_array) == 0){
+            strncpy(arr[sizeof_array].common, name, 4);
+            arr[sizeof_array].count = 1;
+            sizeof_array++;
         }
     }
     fclose(ptr);
     
-    for(int i = 0; i < sizeof_arr; i++){
+    for(int i = 0; i < sizeof_array; i++){
         if(arr[i].count > 1){
             printf("\n\n%s: %d\n==================\n", arr[i].common, arr[i].count);
              ptr= fopen(filename, "r");

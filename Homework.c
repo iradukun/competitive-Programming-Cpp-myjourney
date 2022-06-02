@@ -38,15 +38,13 @@ void main() {
     counter=0;
     while (fgets(buffer, sizeof(buffer) - 1, instream) != NULL) {
         k=0;
-                counter++;
         if(!strncmp(buffer,prevline,3)){
-            if(counter%2!=0){
-                counter=counter+1;
-            }
+                counter++;
+
             while((pos=strstr(buffer+i,prevline)) !=NULL){
                 k=(pos-buffer)+1;
             }
-            printf("%c%c%c%c%c:%d\n\n=========\n\n",buffer[0],buffer[1],buffer[2],buffer[3],buffer[4], counter);
+            printf("%c%c%c%c:%d\n\n=========\n\n",buffer[0],buffer[1],buffer[2],buffer[3], counter);
             printf("%s \n%s",buffer,prevline);
         }
         strcpy(prevline,buffer);
