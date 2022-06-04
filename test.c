@@ -5,7 +5,9 @@
 
 #define MAX_WORDS   1000
 
-void main()
+
+
+int main()
 {
     FILE *fptr;
     char path[100];
@@ -48,7 +50,7 @@ void main()
     while (fscanf(fptr, "%s", word) != EOF)
     {
         // Convert word to lowercase
-        tolower((unsigned char)word);
+    
 
         // Remove last punctuation character
         len = strlen(word);
@@ -60,7 +62,7 @@ void main()
         isUnique = 1;
         for (i=0; i<index && isUnique; i++)
         {
-            if (strcmp(words[i], word) == 0)
+            if (strncmp(words[i], word,4) == 0)
                 isUnique = 0;
         }
 
@@ -83,13 +85,14 @@ void main()
     // Close file
     fclose(fptr);
 
-
+printf("%d",index);
     /*
      * Print occurrences of all words in file. 
      */
     printf("\nOccurrences of all distinct words in file: \n");
-    for (i=0; i<index; i++)
+    for (i=0; i<index+2; i++)
     {
+
         /*
          * %-15s prints string in 15 character width.
          * - is used to print string left align inside
@@ -99,5 +102,5 @@ void main()
     }    
     
 
-    
+    return 0;
 }

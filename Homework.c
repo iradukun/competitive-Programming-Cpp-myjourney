@@ -44,7 +44,7 @@ void main() {
             while((pos=strstr(buffer+i,prevline)) !=NULL){
                 k=(pos-buffer)+1;
             }
-            printf("%c%c%c%c:%d\n\n=========\n\n",buffer[0],buffer[1],buffer[2],buffer[3], counter);
+            printf("%c%c%c%c\n\n=========\n\n",buffer[0],buffer[1],buffer[2],buffer[3]);
             printf("%s \n%s",buffer,prevline);
         }
         strcpy(prevline,buffer);
